@@ -5,6 +5,7 @@ import { useLanguage } from '@/i18n/LanguageProvider';
 import type { Locale } from '@/i18n/types';
 import { LOCALE_NAMES } from '@/i18n/types';
 import Logo from './Logo';
+import AlpacodeBadge from './AlpacodeBadge';
 import LiveStatus from '@/components/ui/LiveStatus';
 import WhatsAppIcon from '@/components/ui/WhatsAppIcon';
 import { SITE } from '@/lib/site';
@@ -206,20 +207,23 @@ export default function Footer() {
           <p>
             © {new Date().getFullYear()} {SITE.name} · {f.rightsReserved}
           </p>
-          <nav aria-label={legal.privacy} className="flex flex-wrap items-center gap-x-5 gap-y-2">
-            <Link href="/privacy-policy" className="transition-colors hover:text-white">
-              {legal.privacy}
-            </Link>
-            <Link href="/cookie-policy" className="transition-colors hover:text-white">
-              {legal.cookie}
-            </Link>
-            <Link href="/termini" className="transition-colors hover:text-white">
-              {legal.terms}
-            </Link>
-            <button type="button" onClick={reopenConsent} className="transition-colors hover:text-white">
-              {legal.prefs}
-            </button>
-          </nav>
+          <div className="flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8">
+            <nav aria-label={legal.privacy} className="flex flex-wrap items-center gap-x-5 gap-y-2">
+              <Link href="/privacy-policy" className="transition-colors hover:text-white">
+                {legal.privacy}
+              </Link>
+              <Link href="/cookie-policy" className="transition-colors hover:text-white">
+                {legal.cookie}
+              </Link>
+              <Link href="/termini" className="transition-colors hover:text-white">
+                {legal.terms}
+              </Link>
+              <button type="button" onClick={reopenConsent} className="transition-colors hover:text-white">
+                {legal.prefs}
+              </button>
+            </nav>
+            <AlpacodeBadge theme="dark" />
+          </div>
         </div>
         <p className="border-t border-white/10 py-6 text-[12px] leading-relaxed text-white/55">
           {SITE.legalName} · {f.vatLabel} {SITE.vatNumber} · {f.registeredOffice}: {SITE.legalAddress.street},{' '}
